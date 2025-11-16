@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart | CeHelen</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .cart-page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: #fffafc;
+      }
+      .cart-header {
+        background: linear-gradient(135deg, #a233d6 0%, #c96ce8 100%);
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .cart-header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+      }
+      .cart-container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        width: 100%;
+        flex: 1;
+      }
+      .cart-content {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 2rem;
+      }
+      .cart-items {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .cart-items h2 {
+        color: #a233d6;
+        margin-top: 0;
+      }
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+      }
+      .cart-item:last-child {
+        border-bottom: none;
+      }
+      .item-details {
+        flex: 1;
+      }
+      .item-name {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+      .item-price {
+        color: #a233d6;
+        font-weight: bold;
+      }
+      .item-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .qty-btn {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ddd;
+        background: white;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: bold;
+        color: #333;
+      }
+      .qty-btn:hover {
+        background: #f0e5f8;
+      }
+      .remove-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .remove-btn:hover {
+        background: #c82333;
+      }
+      .cart-summary {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+      }
+      .cart-summary h3 {
+        color: #a233d6;
+        margin-top: 0;
+        margin-bottom: 1rem;
+      }
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        color: #666;
+      }
+      .summary-row.total {
+        border-top: 2px solid #eee;
+        padding-top: 1rem;
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        color: #a233d6;
+        font-weight: bold;
+      }
+      .checkout-btn {
+        width: 100%;
+        padding: 12px;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-top: 1rem;
+        transition: background-color 0.3s;
+      }
+      .checkout-btn:hover {
+        background: #218838;
+      }
+      .continue-btn {
+        width: 100%;
+        padding: 12px;
+        background: #a233d6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 0.5rem;
+      }
+      .continue-btn:hover {
+        background: #8b2bb8;
+      }
+      .empty-cart {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: #666;
+      }
+      .empty-cart h2 {
+        color: #a233d6;
+      }
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      .nav-buttons a {
+        padding: 10px 20px;
+        background: #a233d6;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .nav-buttons a:hover {
+        background: #8b2bb8;
+      }
+      @media (max-width: 768px) {
+        .cart-content {
+          grid-template-columns: 1fr;
+        }
+        .cart-summary {
+          position: relative;
+          top: 0;
+        }
+      }
+      @media (max-width: 600px) {
+        .cart-header h1 {
+          font-size: 2rem;
+        }
+        .cart-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .item-controls {
+          width: 100%;
+          margin-top: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="cart-page">
+    <header class="cart-header">
+      <h1>🛒 Your Cart</h1>
+    </header>
+
+    <div class="cart-container">
+      <div class="cart-content">
+        <div class="cart-items">
+          <h2>Cart Items</h2>
+          <div id="cartItemsContainer"></div>
+        </div>
+
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span>$<span id="subtotal">0.00</span></span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (10%):</span>
+            <span>$<span id="tax">0.00</span></span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span>$<span id="cartTotal">0.00</span></span>
+          </div>
+          <button class="checkout-btn" id="checkoutBtn" onclick="checkout()">
+            💳 Checkout
+          </button>
+          <a href="shop.html" class="continue-btn">← Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="cart.js"></script>
+  </body>
+</html>

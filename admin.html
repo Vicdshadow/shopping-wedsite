@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <h1 class="cehelen-elegant">CeHelen</h1>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>CeHelen Admin</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="home-body">
+    <header><h1>Admin - Add New Product</h1></header>
+    <form id="productForm" class="login-container">
+      <input type="text" id="prodName" placeholder="Product Name" required />
+      <input
+        type="number"
+        id="prodPrice"
+        placeholder="Price"
+        min="1"
+        required
+      />
+      <select id="prodCategory">
+        <option value="Bags">Bags</option>
+        <option value="Jewelry">Jewelry</option>
+        <option value="Shoes">Shoes</option>
+        <option value="Sunglasses">Sunglasses</option>
+        <option value="Watches">Watches</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Cosmetics">Cosmetics</option>
+      </select>
+      <input type="file" id="prodImage" accept="image/*" required />
+      <button type="submit">Add Product</button>
+    </form>
+    <a href="shop.html" class="shop-btn">Back to Shop</a>
+    <script src="script.js"></script>
+  </body>
+</html>

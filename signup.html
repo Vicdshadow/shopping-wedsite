@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | CeHelen</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      .signup-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #ffe6f0 0%, #ffffff 100%);
+        padding: 1rem;
+      }
+      .signup-box {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      .signup-box h1 {
+        color: #a233d6;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+      .signup-box h2 {
+        color: #666;
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #555;
+        font-weight: 500;
+      }
+      .form-group input[type="text"],
+      .form-group input[type="email"],
+      .form-group input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+      .form-group input:focus {
+        outline: none;
+        border-color: #a233d6;
+        box-shadow: 0 0 5px rgba(162, 51, 214, 0.3);
+      }
+      .role-selection {
+        margin: 1.5rem 0;
+        padding: 1rem;
+        background: #f9f9f9;
+        border-radius: 6px;
+      }
+      .role-selection p {
+        margin-top: 0;
+        color: #555;
+        font-weight: 500;
+      }
+      .role-selection label {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 2rem;
+        cursor: pointer;
+      }
+      .role-selection input[type="radio"] {
+        margin-right: 0.5rem;
+      }
+      .signup-box button {
+        width: 100%;
+        background-color: #a233d6;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        margin-top: 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      .signup-box button:hover {
+        background-color: #8b2bb8;
+      }
+      .signup-box p {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #666;
+      }
+      .signup-box a {
+        color: #a233d6;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .signup-box a:hover {
+        text-decoration: underline;
+      }
+      @media (max-width: 600px) {
+        .signup-box {
+          padding: 1.5rem;
+        }
+        .signup-box h1 {
+          font-size: 2rem;
+        }
+        .role-selection label {
+          margin-right: 1rem;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body class="signup-page">
+    <div class="signup-box">
+      <h1>CeHelen</h1>
+      <h2>Create an Account</h2>
+
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Create a password"
+            required
+          />
+        </div>
+
+        <div class="role-selection">
+          <p>Account Type:</p>
+          <label>
+            <input type="radio" name="role" value="buyer" required /> Buyer
+          </label>
+          <label>
+            <input type="radio" name="role" value="seller" required /> Seller
+          </label>
+        </div>
+
+        <button type="submit">Create Account</button>
+      </form>
+
+      <p>Already have an account? <a href="index.html">Login</a></p>
+    </div>
+
+    <script type="module" src="signup.js"></script>
+  </body>
+</html>

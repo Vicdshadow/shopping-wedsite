@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders | CeHelen</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .orders-page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: #fffafc;
+      }
+      .orders-header {
+        background: linear-gradient(135deg, #a233d6 0%, #c96ce8 100%);
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .orders-header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .orders-nav {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .orders-nav a,
+      .orders-nav button {
+        padding: 10px 20px;
+        background: white;
+        color: #a233d6;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s;
+      }
+      .orders-nav a:hover,
+      .orders-nav button:hover {
+        background: #ffd4e5;
+        transform: translateY(-2px);
+      }
+      .orders-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        flex: 1;
+        width: 100%;
+      }
+      .orders-list {
+        display: grid;
+        gap: 1.5rem;
+      }
+      .order-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #a233d6;
+      }
+      .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .order-id {
+        font-weight: bold;
+        color: #333;
+      }
+      .order-status {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+      .order-status.pending {
+        background: #fff3cd;
+        color: #856404;
+      }
+      .order-status.completed {
+        background: #d4edda;
+        color: #155724;
+      }
+      .order-status.cancelled {
+        background: #f8d7da;
+        color: #721c24;
+      }
+      .order-items {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: #f9f9f9;
+        border-radius: 8px;
+      }
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+      }
+      .order-item:last-child {
+        border-bottom: none;
+      }
+      .item-name {
+        color: #333;
+      }
+      .item-qty-price {
+        color: #666;
+        font-size: 0.9rem;
+      }
+      .order-totals {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 1rem;
+        border-top: 2px solid #eee;
+        margin-top: 1rem;
+      }
+      .order-total {
+        font-weight: bold;
+        color: #a233d6;
+        font-size: 1.1rem;
+      }
+      .order-date {
+        color: #999;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+      }
+      .loading {
+        text-align: center;
+        color: #a233d6;
+        font-weight: bold;
+        padding: 2rem;
+      }
+      .empty-orders {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: #666;
+      }
+      .empty-orders h2 {
+        color: #a233d6;
+      }
+      @media (max-width: 600px) {
+        .orders-header h1 {
+          font-size: 2rem;
+        }
+        .orders-nav {
+          flex-direction: column;
+        }
+        .orders-nav a,
+        .orders-nav button {
+          width: 100%;
+        }
+        .order-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .order-totals {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="orders-page">
+    <header class="orders-header">
+      <h1>📦 My Orders</h1>
+      <div class="orders-nav">
+        <a href="home.html">← Back to Home</a>
+        <a href="shop.html">🛍️ Continue Shopping</a>
+        <button id="logoutBtn">🚪 Logout</button>
+      </div>
+    </header>
+
+    <div class="orders-container">
+      <div id="ordersList" class="orders-list">
+        <p class="loading">Loading your orders...</p>
+      </div>
+    </div>
+
+    <script type="module" src="orders.js"></script>
+  </body>
+</html>
